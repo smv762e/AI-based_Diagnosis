@@ -1,2 +1,2 @@
-# AI-based_Diagnosis
+# Healthcare_Web_Application
 Web engineering project
