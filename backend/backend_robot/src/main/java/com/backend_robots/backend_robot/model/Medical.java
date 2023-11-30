@@ -1,54 +1,70 @@
 package com.backend_robots.backend_robot.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Medical {
-    private String name;
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    private String pasword;
-    public String pasword() {
-        return pasword;
-    }
-    public void setPasword(String pasword) {
-        this.pasword = pasword;
-    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    
+    private String user;
+    private String password;
+
+    public Medical(long id, String user, String password) {
+        this.id = id;
+        this.user = user;
+        this.password = password;
+    }
+
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
 
-    public void crearSolicitud(long Id_ruta){}
+    public String getUser() {
+        return user;
+    }
 
-    @ManyToOne
-    private Rutas ruta;
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    @ManyToMany
+    @JoinTable(
+        name = "medical_places",
+        joinColumns = @JoinColumn(name = "medical_id"),
+        inverseJoinColumns = @JoinColumn(name = "place_id")
+    )
+
+    private long idRuta;
+
+    public long getIdRuta() {
+        return idRuta;
+    }
+    public void setIdRuta(long idRuta) {
+        this.idRuta = idRuta;
+    }
     
-
-    public Rutas getRuta() {
-        return ruta;
-    }
-    public void setRuta(Rutas ruta) {
-        this.ruta = ruta;
-    }
-    
-    @ManyToOne
-    private Request solicitud;
-    public Request getsolicitud() {
-        return solicitud;
-    }
-
-    public void setSol(Request solicitud) {
-        this.solicitud = solicitud;
-    }
 
 
 }
