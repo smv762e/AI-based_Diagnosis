@@ -1,7 +1,8 @@
 package com.backend_robots.backend_robot.controller;
 
 import com.backend_robots.backend_robot.model.Record;
-import com.backend_robots.backend_robot.model.RecordService;
+import com.backend_robots.backend_robot.service.RecordService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

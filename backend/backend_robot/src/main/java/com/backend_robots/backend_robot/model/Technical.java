@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -48,8 +49,9 @@ private java.util.List<Record> registros;
 public java.util.List<Record> getRegistros() {
     return registros;
 }
-@OneToMany(mappedBy = "tecnico", cascade = CascadeType.ALL)
+@ManyToMany(mappedBy = "tecnicos", cascade = CascadeType.ALL)
 private List<Trolley> carros;
+
 
 
 }

@@ -1,11 +1,15 @@
 package com.backend_robots.backend_robot.model;
+
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,22 +28,23 @@ public class Trolley {
         
     }
 
-
-
     @Column(name = "Estado", nullable = false)
     private boolean estado;
     public boolean getEstado(){
         return estado;
     }
+
     public void setEstado(boolean estado){
         this.estado=estado;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "tecnico_id")  // nombre de la columna que representa la relación en la tabla carro
-    private Technical tecnico;
+    @ManyToMany
+    @JoinTable(
+    name = "trolley_technical",
+    joinColumns = @JoinColumn(name = "id_carro"),
+    inverseJoinColumns = @JoinColumn(name = "tecnico_id")
+    )
+    private List<Technical> tecnicos;
 
-    public 
-    
 
     }

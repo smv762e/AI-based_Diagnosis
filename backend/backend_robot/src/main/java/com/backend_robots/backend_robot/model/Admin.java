@@ -1,20 +1,32 @@
 package com.backend_robots.backend_robot.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "admin")
 public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    
+
     private String user;
     private String password;
 
-    public Admin(long id, String user, String password) {
-        this.id = id;
+    @ManyToMany
+    @JoinTable(
+        name = "admin_routes",
+        joinColumns = @JoinColumn(name = "admin_id"),
+        inverseJoinColumns = @JoinColumn(name = "routes_id")
+    )
+    private List<Routes> routes;
+
+    public Admin() {
+        // Constructor vacío necesario para JPA
+    }
+
+    public Admin(String user, String password) {
         this.user = user;
         this.password = password;
     }
@@ -41,5 +53,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Routes> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Routes> routes) {
+        this.routes = routes;
     }
 }
