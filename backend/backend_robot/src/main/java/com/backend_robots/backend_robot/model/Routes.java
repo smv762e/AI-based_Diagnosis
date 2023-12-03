@@ -1,12 +1,7 @@
 package com.backend_robots.backend_robot.model;
 
-import java.util.*;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Routes extends Place {
@@ -17,8 +12,14 @@ public class Routes extends Place {
     private Place finalPoint;
     private Place initialPoint;
 
-    public Routes(long id, Place finalPoint, Place initialPoint) {
-        this.id = id;
+    @ManyToMany(mappedBy = "routes")
+    private List<Admin> admins;
+
+    public Routes() {
+        // Constructor vacío necesario para JPA
+    }
+
+    public Routes(Place finalPoint, Place initialPoint) {
         this.finalPoint = finalPoint;
         this.initialPoint = initialPoint;
     }
@@ -47,12 +48,11 @@ public class Routes extends Place {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Route [Id=" + id + ", Start point=" + initialPoint + ", Final point=" + finalPoint + "]";
+    public List<Admin> getAdmins() {
+        return admins;
     }
 
-    @ManyToMany(mappedBy = "drugs")
-    private List<Medical> medicoRequests;
-
+    public void setAdmins(List<Admin> admins) {
+        this.admins = admins;
+    }
 }

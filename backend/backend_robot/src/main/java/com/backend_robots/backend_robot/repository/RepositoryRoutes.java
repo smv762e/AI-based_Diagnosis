@@ -1,4 +1,4 @@
-package com.backend_robots.backend_robot.model;
+package com.backend_robots.backend_robot.repository;
 
 import com.backend_robots.backend_robot.model.Routes;
 import com.backend_robots.backend_robot.model.Place;
@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RoutesRepository extends JpaRepository<Routes, Long> {
+public interface RepositoryRoutes extends JpaRepository<Routes, Long> {
     List<Routes> findByInitialPoint(Place initialPoint);
 }

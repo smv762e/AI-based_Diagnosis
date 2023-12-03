@@ -1,8 +1,8 @@
 package com.backend_robots.backend_robot.controller;
 
-import com.backend_robots.backend_robot.model.Place;
 import com.backend_robots.backend_robot.model.Routes;
-import com.backend_robots.backend_robot.model.RoutesService;
+import com.backend_robots.backend_robot.service.RoutesService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -12,6 +12,8 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private String[] drugs;
+
 
     public long getId() {
         return id;
@@ -28,7 +30,6 @@ public class Request {
         return Id_ruta;
     }
 
-    private String[] drugs;
 
     public String[] getDrugs() {
         return drugs;
@@ -45,7 +46,15 @@ public class Request {
         Medico = medico;
     }
 
+    
 
+    public void setDrugs(String[] drugs) {
+        this.drugs = drugs;
+    }
+
+    public void setId_ruta(long Id_ruta) {
+        this.Id_ruta = Id_ruta;
+    }
 
     
 }
