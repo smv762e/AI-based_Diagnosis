@@ -45,7 +45,7 @@ public class AdminService {
             return adminRepository.save(admin);
         } else {
             // Manejar el caso en el que el administrador no existe con el ID proporcionado
-            // Puedes lanzar una excepción o manejarlo de otra manera según tus necesidades
+            
             return null;
         }
     }
@@ -60,10 +60,10 @@ public class AdminService {
             return adminRepository.save(admin);
         } else {
             // Manejar el caso en el que el administrador no existe con el ID proporcionado
-            // Puedes lanzar una excepción o manejarlo de otra manera según tus necesidades
+            
             return null;
         }
     }
 
-    // Puedes agregar más métodos según tus necesidades, por ejemplo, para realizar operaciones específicas del administrador.
+  
 }

@@ -46,7 +46,6 @@ public class MedicalService {
             return requestRepository.save(request);
         } else {
             // Manejar el caso en el que el médico no existe con el ID proporcionado
-            // Puedes lanzar una excepción o manejarlo de otra manera según tus necesidades
             return null;
         }
     }
