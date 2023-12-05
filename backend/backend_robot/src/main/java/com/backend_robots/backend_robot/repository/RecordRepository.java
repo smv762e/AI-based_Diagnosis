@@ -7,5 +7,5 @@ import com.backend_robots.backend_robot.model.Record;
 
 
 @Repository
-public interface RepositoryRecord extends JpaRepository<Record, Long> {
+public interface RecordRepository extends JpaRepository<Record, Long> {
 }

@@ -10,8 +10,9 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    @Column(name = "nombre")
     private String user;
+    @Column(name = "contraseña")
     private String password;
 
     @ManyToMany
@@ -20,6 +21,7 @@ public class Admin {
         joinColumns = @JoinColumn(name = "admin_id"),
         inverseJoinColumns = @JoinColumn(name = "routes_id")
     )
+    @Column(name = "rutas")
     private List<Routes> routes;
 
     public Admin() {

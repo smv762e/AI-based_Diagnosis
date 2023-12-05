@@ -1,5 +1,6 @@
 package com.backend_robots.backend_robot.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,18 +9,34 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
+import java.util.List;  // Importa List
+
 @Entity
 public class Medical {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    
+
+    @Column(name = "nombre")
     private String user;
+
+    @Column(name = "contraseña")
     private String password;
 
-    public Medical(long id, String user, String password) {
-        this.id = id;
+    @ManyToMany
+    @JoinTable(
+        name = "medical_places",
+        joinColumns = @JoinColumn(name = "medical_id"),
+        inverseJoinColumns = @JoinColumn(name = "route_id")
+    )
+    private List<Routes> routes;  // Cambia el tipo a List<Routes>
+
+    public Medical() {
+        // Constructor vacío necesario para JPA
+    }
+
+    public Medical(String user, String password) {
         this.user = user;
         this.password = password;
     }
@@ -48,23 +65,11 @@ public class Medical {
         this.password = password;
     }
 
-
-    @ManyToMany
-    @JoinTable(
-        name = "medical_places",
-        joinColumns = @JoinColumn(name = "medical_id"),
-        inverseJoinColumns = @JoinColumn(name = "place_id")
-    )
-
-    private long idRuta;
-
-    public long getIdRuta() {
-        return idRuta;
+    public List<Routes> getRoutes() {
+        return routes;
     }
-    public void setIdRuta(long idRuta) {
-        this.idRuta = idRuta;
+
+    public void setRoutes(List<Routes> routes) {
+        this.routes = routes;
     }
-    
-
-
 }

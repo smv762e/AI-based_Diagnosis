@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.backend_robots.backend_robot.model.Routes;
-import com.backend_robots.backend_robot.repository.RepositoryRoutes;
+import com.backend_robots.backend_robot.repository.RoutesRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +13,10 @@ import java.util.Optional;
 @Service
 public class RoutesService {
 
-    private final RepositoryRoutes repositoryRoutes;
+    private final RoutesRepository repositoryRoutes;
 
     @Autowired
-    public RoutesService(RepositoryRoutes repositoryRoutes) {
+    public RoutesService(RoutesRepository repositoryRoutes) {
         this.repositoryRoutes = repositoryRoutes;
     }
 

@@ -1,7 +1,7 @@
 package com.backend_robots.backend_robot.service;
 
 import com.backend_robots.backend_robot.model.Request;
-import com.backend_robots.backend_robot.repository.RepositoryRequest;
+import com.backend_robots.backend_robot.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import java.util.Optional;
 @Service
 public class RequestService {
 
-    private final RepositoryRequest requestRepository;
+    private final RequestRepository requestRepository;
 
     @Autowired
-    public RequestService(RepositoryRequest requestRepository) {
+    public RequestService(RequestRepository requestRepository) {
         this.requestRepository = requestRepository;
     }
 

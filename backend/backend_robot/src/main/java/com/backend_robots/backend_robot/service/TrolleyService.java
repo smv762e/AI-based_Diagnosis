@@ -1,47 +1,50 @@
 package com.backend_robots.backend_robot.service;
 
-import java.util.List;
-
+import com.backend_robots.backend_robot.model.Trolley;
+import com.backend_robots.backend_robot.repository.TrolleyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backend_robots.backend_robot.model.Technical;
-import com.backend_robots.backend_robot.model.Trolley;
-import com.backend_robots.backend_robot.repository.RepositoryTrolley;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TrolleyService{
+public class TrolleyService {
+
+    private final TrolleyRepository trolleyRepository;
+
     @Autowired
-    RepositoryTrolley repositoryTrolley;
-
-
-       public List<Trolley> findAll(){
-        return repositoryTrolley.findAll();
-       }
-    public Trolley findByIdTrolley(long id){
-        return repositoryTrolley.findByIdTrolley(id);
+    public TrolleyService(TrolleyRepository trolleyRepository) {
+        this.trolleyRepository = trolleyRepository;
     }
-    public Trolley findByTechId(Technical technical){
-        return repositoryTrolley.findByTechId(technical);
+
+    public List<Trolley> getAllTrolleys() {
+        return trolleyRepository.findAll();
     }
-     public void changeEstado(Trolley t){
-         repositoryTrolley.changeEstado(t);
-     }
-	public List<Trolley> getAllTrolleys() {
-		return null;
-	}
-     public Trolley getTrolley( long id){
-        return repositoryTrolley.getById(id);
-     }
-	public void addTrolley(Trolley trolley) {
-        repositoryTrolley.addTrolley(trolley);
-	}
 
-     
+    public Optional<Trolley> getTrolleyById(Long id) {
+        return trolleyRepository.findById(id);
+    }
 
+    public Trolley saveTrolley(Trolley trolley) {
+        return trolleyRepository.save(trolley);
+    }
 
+    public void deleteTrolley(Long id) {
+        trolleyRepository.deleteById(id);
+    }
 
+    public void changeTrolleyState(Long id, boolean newState) {
+        Optional<Trolley> optionalTrolley = trolleyRepository.findById(id);
+        if (optionalTrolley.isPresent()) {
+            Trolley trolley = optionalTrolley.get();
+            trolley.setEstado(newState);
+            trolleyRepository.save(trolley);
+        } else {
+            // Manejar el caso en el que el carro no existe con el ID proporcionado
+            // Puedes lanzar una excepción o manejarlo de otra manera según tus necesidades
+        }
+    }
 
-
-
+    // Puedes agregar más métodos según tus necesidades, por ejemplo, para gestionar las relaciones Many-to-Many con técnicos.
 }
