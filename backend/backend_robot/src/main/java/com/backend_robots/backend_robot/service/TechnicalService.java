@@ -41,7 +41,11 @@ public class TechnicalService {
     }
 
     private boolean cambiarEstadoCarro(long carNumber) {
-      
+        // Lógica para cambiar el estado del carro (implementa según tus necesidades)
+        // Por ejemplo, puedes consultar el estado actual y cambiarlo
+        // Retorna true si el cambio es exitoso, false en caso contrario
+        // ...
+
         return true;
     }
 

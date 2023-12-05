@@ -42,8 +42,9 @@ public class TrolleyService {
             trolleyRepository.save(trolley);
         } else {
             // Manejar el caso en el que el carro no existe con el ID proporcionado
+            // Puedes lanzar una excepción o manejarlo de otra manera según tus necesidades
         }
     }
 
- 
+    // Puedes agregar más métodos según tus necesidades, por ejemplo, para gestionar las relaciones Many-to-Many con técnicos.
 }

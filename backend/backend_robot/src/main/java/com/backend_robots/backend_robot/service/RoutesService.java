@@ -37,6 +37,9 @@ public class RoutesService {
         Optional<Routes> routeOptional = repositoryRoutes.findById(id);
         if (routeOptional.isPresent()) {
             Routes existingRoute = routeOptional.get();
+            // Aquí podrías realizar las actualizaciones necesarias en existingRoute con los datos de routeDetails
+            // Por ejemplo, existingRoute.setInitialPoint(routeDetails.getInitialPoint());
+            // Luego, guarda la ruta actualizada
             return repositoryRoutes.save(existingRoute);
         } else {
             return null;
