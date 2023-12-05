@@ -1,5 +1,6 @@
 package com.backend_robots.backend_robot.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "medicamentos")
     private String[] drugs;
 
 
@@ -54,6 +56,19 @@ public class Request {
 
     public void setId_ruta(long Id_ruta) {
         this.Id_ruta = Id_ruta;
+    }
+
+    @ManyToOne
+    private Technical technician;
+
+    // Getters y setters para otros atributos
+
+    public Technical getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(Technical technician) {
+        this.technician = technician;
     }
 
     

@@ -28,7 +28,7 @@ public class Trolley {
         
     }
 
-    @Column(name = "Estado", nullable = false)
+    @Column(name = "Estado")
     private boolean estado;
     public boolean getEstado(){
         return estado;
@@ -45,6 +45,8 @@ public class Trolley {
     inverseJoinColumns = @JoinColumn(name = "tecnico_id")
     )
     private List<Technical> tecnicos;
+
+
 
 
     }

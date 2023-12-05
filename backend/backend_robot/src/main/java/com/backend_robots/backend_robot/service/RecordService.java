@@ -1,6 +1,6 @@
 package com.backend_robots.backend_robot.service;
 import com.backend_robots.backend_robot.model.Record;
-import com.backend_robots.backend_robot.repository.RepositoryRecord;
+import com.backend_robots.backend_robot.repository.RecordRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.util.Optional;
 @Service
 public class RecordService {
 
-    private final RepositoryRecord recordRepository;
+    private final RecordRepository recordRepository;
 
     @Autowired
-    public RecordService(RepositoryRecord recordRepository) {
+    public RecordService(RecordRepository recordRepository) {
         this.recordRepository = recordRepository;
     }
 
@@ -37,11 +37,8 @@ public class RecordService {
         if (optionalRecord.isPresent()) {
             Record existingRecord = optionalRecord.get();
             // Actualizar los campos que sean necesarios
-            existingRecord.setN_carro(recordDetails.getN_carro());
-            existingRecord.setH_inicio(recordDetails.getH_inicio());
-            existingRecord.setH_fin(recordDetails.getH_fin());
-            existingRecord.setFecha(recordDetails.getFecha());
-            existingRecord.setTecnico(recordDetails.getTecnico());
+            existingRecord.setCarNumber(recordDetails.getCarNumber());
+            existingRecord.setTechnician(recordDetails.getTechnician());
 
             // Guardar el registro actualizado
             return recordRepository.save(existingRecord);

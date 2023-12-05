@@ -1,10 +1,9 @@
 package com.backend_robots.backend_robot.controller;
 
 import com.backend_robots.backend_robot.model.Medical;
+import com.backend_robots.backend_robot.model.Request;
 import com.backend_robots.backend_robot.service.MedicalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,42 +20,39 @@ public class MedicalController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Medical>> getAllMedicals() {
-        List<Medical> medicals = medicalService.getAllMedicals();
-        return new ResponseEntity<>(medicals, HttpStatus.OK);
+    public List<Medical> getAllMedicals() {
+        return medicalService.getAllMedicals();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Medical> getMedicalById(@PathVariable("id") Long id) {
-        Medical medical = medicalService.getMedicalById(id);
-        if (medical != null) {
-            return new ResponseEntity<>(medical, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public Medical getMedicalById(@PathVariable Long id) {
+        return medicalService.getMedicalById(id)
+                .orElse(null); // Manejar el caso en el que el médico no existe con el ID proporcionado
     }
 
     @PostMapping
-    public ResponseEntity<Medical> createMedical(@RequestBody Medical medical) {
-        Medical createdMedical = medicalService.createMedical(medical);
-        return new ResponseEntity<>(createdMedical, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Medical> updateMedical(
-            @PathVariable("id") Long id,
-            @RequestBody Medical medicalDetails) {
-        Medical updatedMedical = medicalService.updateMedical(id, medicalDetails);
-        if (updatedMedical != null) {
-            return new ResponseEntity<>(updatedMedical, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public Medical saveMedical(@RequestBody Medical medical) {
+        return medicalService.saveMedical(medical);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteMedical(@PathVariable("id") Long id) {
+    public void deleteMedical(@PathVariable Long id) {
         medicalService.deleteMedical(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/{medicalId}/requests")
+    public Request createRequest(@PathVariable Long medicalId, @RequestBody Request request) {
+        return medicalService.createRequest(medicalId, request);
+    }
+
+    @PutMapping("/{medicalId}/requests/{requestId}")
+    public Request updateRequest(
+            @PathVariable Long medicalId,
+            @PathVariable Long requestId,
+            @RequestBody Request updatedRequest
+    ) {
+        return medicalService.updateRequest(medicalId, requestId, updatedRequest);
+    }
+
+    // Puedes agregar más métodos según tus necesidades, por ejemplo, para realizar operaciones específicas del médico.
 }

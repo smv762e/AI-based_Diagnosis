@@ -4,43 +4,54 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Routes extends Place {
+public class Routes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private Place finalPoint;
-    private Place initialPoint;
+    private String finalPoint;
+    private String initialPoint;
 
     @ManyToMany(mappedBy = "routes")
     private List<Admin> admins;
 
-    public Routes() {
+    @ManyToMany(mappedBy = "routes")
+    private List<Medical> medicals;
+
+    public List<Medical> getMedicals() {
+		return medicals;
+	}
+
+	public void setMedicals(List<Medical> medicals) {
+		this.medicals = medicals;
+	}
+
+	public Routes() {
         // Constructor vacío necesario para JPA
     }
 
-    public Routes(Place finalPoint, Place initialPoint) {
+    public Routes(String finalPoint, String initialPoint) {
         this.finalPoint = finalPoint;
         this.initialPoint = initialPoint;
     }
 
-    public Place getInitialPoint() {
+    public String getInitialPoint() {
         return initialPoint;
     }
 
-    public void setInitialPoint(Place initialPoint) {
+    public void setInitialPoint(String initialPoint) {
         this.initialPoint = initialPoint;
     }
 
-    public Place getFinalPoint() {
+    public String getFinalPoint() {
         return finalPoint;
     }
 
-    public void setFinalPoint(Place finalPoint) {
+    public void setFinalPoint(String finalPoint) {
         this.finalPoint = finalPoint;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -55,4 +66,5 @@ public class Routes extends Place {
     public void setAdmins(List<Admin> admins) {
         this.admins = admins;
     }
+    
 }
