@@ -9,9 +9,9 @@ import { RequestService } from '../services/request.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  requestForm: FormGroup;
+  requestForm!: FormGroup;
   isEditing = false;
-  selectedRequestId: number;
+  selectedRequestId!: number | null;
 
   constructor(private formBuilder: FormBuilder, private requestService: RequestService) { }
 
