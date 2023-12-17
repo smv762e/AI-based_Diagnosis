@@ -13,13 +13,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormComponent } from './form/form.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestComponent,
     HeaderComponent,
-    FormComponent
+    FormComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
