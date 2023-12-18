@@ -10,6 +10,12 @@
       <mat-cell *matCellDef="let element" title="{{element.drugs}}">{{ element.drugs}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Id_ruta">
+        <mat-header-cell *matHeaderCellDef> Id_ruta </mat-header-cell>
+        <mat-cell *matCellDef="let element" title="{{element.Id_ruta}}">{{ element.Id_ruta}} </mat-cell>
+    </ng-container>
+
+
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef > View </mat-header-cell>
       <mat-cell *matCellDef="let element">            
@@ -31,3 +37,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+

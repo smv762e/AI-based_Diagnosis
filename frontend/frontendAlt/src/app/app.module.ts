@@ -13,22 +13,25 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar'; 
+import { MatSelectModule } from '@angular/material/select';
 
-import { CuentasComponent } from './cuentas/cuentas.component';
-import { CreateCuentaComponent } from './create-cuenta/create-cuenta.component'; 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CreateSolicitudComponent } from './create-solicitud/create-solicitud.component';
+import { SolicitudComponent } from './solicitud/solicitud.component';
+import { RobotListComponent } from './robots/robots.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CuentasComponent,
-    CreateCuentaComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CreateSolicitudComponent,
+    SolicitudComponent,
+    RobotListComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
     MatButtonModule,
     FormsModule,
     MatTableModule,
+    MatSelectModule,
     HttpClientModule,
     MatSnackBarModule,
     MatFormFieldModule,

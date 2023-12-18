@@ -1,35 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Cuenta } from '../cuenta';
+import { Request } from '../request';
 @Injectable({
   providedIn: 'root'
 })
-export class CuentaService {
+export class RequestService {
 
   baseUrl = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) { }
 
-    url = this.baseUrl + '/cuenta';
+    url = this.baseUrl + '/request';
     
-    getAccounts(){
+    getRequests(){
       return this.httpClient.get<JSON[]>(this.url);
     }
 
-    getAccount(id: number){
+    getRequest(id: number){
       return this.httpClient.get<JSON>(this.url + '/' + id);
     }
     
-    createAccount(data: Cuenta){
+    createRequest(data: Request){
       return this.httpClient.post(this.url, data)
     }
 
-    updateAccount(data: Cuenta){
+    updateRequest(data: Request){
       return this.httpClient.put(this.url, data)
     }
 
-    deleteAccount(id: number){
+    deleteRequest(id: number){
       return this.httpClient.delete(this.url + '/' + id)
     }
+
 }

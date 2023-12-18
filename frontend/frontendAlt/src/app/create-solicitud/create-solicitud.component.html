@@ -1,21 +1,21 @@
 <div class="container">
     <mat-card>
         <mat-card-title>
-            <div *ngIf="create">Create Cuenta</div>
-            <div *ngIf="!create">Edit Cuenta {{cuenta.id}}</div>
+            <div *ngIf="create">Create Solicitud</div>
+            <div *ngIf="!create">Edit Solicitud {{request.id}}</div>
         </mat-card-title>
         
         <form class="create-model-form" #form="ngForm" (ngSubmit)="onSubmit(form.value)" autocomplete="off">
             <mat-form-field *ngIf="!create" class="full-width">
-                <input matInput type="number"  disabled name="id" [(ngModel)]="cuenta.id">
+                <input matInput type="number"  disabled name="id" [(ngModel)]="request.id">
             </mat-form-field>
 
             <mat-form-field class="full-width">
-                <input matInput type="number"  autofocus required placeholder="CCC"  name="ccc" [(ngModel)]="cuenta.ccc">
+                <input matInput type="string" placeholder="Medicamentos" required name="medicamento"  [(ngModel)]="request.drugs">
             </mat-form-field>
             <br>
             <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Balance" required name="balance"  [(ngModel)]="cuenta.balance">
+                <input matInput type="number" placeholder="Ruta" required name="ruta"  [(ngModel)]="request.Id_ruta">
             </mat-form-field>
             <br>
             <div class="row-buttons">

@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { CuentaService } from '../services/cuenta.service';
+import { RequestService } from '../services/request.service';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar'; 
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
-  selector: 'app-cuentas',
-  templateUrl: './cuentas.component.html',
-  styleUrls: ['./cuentas.component.css']
+  selector: 'app-solicitud',
+  templateUrl: './solicitud.component.html',
+  styleUrls: ['./solicitud.component.css']
 })
-export class CuentasComponent implements OnInit  {
-
-  displayedColumns = ['id', 'ccc', 'balance', 'view','delete'];
-  accounts: JSON[] =[];
+export class SolicitudComponent implements OnInit {
+  displayedColumns = ['id', 'drugs', 'id_ruta','view','delete'];
+  solicitudes: JSON[] =[];
   element = {};
-  dataSource = new MatTableDataSource(this.accounts);
-  
-  constructor(private cuentaService: CuentaService,
+  dataSource = new MatTableDataSource(this.solicitudes);
+
+  constructor(private solicitudService: RequestService,
     private snackbar: MatSnackBar,
     public dialog: MatDialog) { }
     
@@ -25,14 +24,14 @@ export class CuentasComponent implements OnInit  {
   }
 
   updateData(){
-    this.cuentaService.getAccounts().subscribe({
-      next: (accounts: JSON[]) => {
-        console.log(accounts);
-        this.accounts = accounts;
-        this.dataSource.data=this.accounts;
+    this.solicitudService.getRequests().subscribe({
+      next: (solicitudes: JSON[]) => {
+        console.log(solicitudes);
+        this.solicitudes = solicitudes;
+        this.dataSource.data=this.solicitudes;
       },
       error: (e: any) => {
-        this.snackbar.open('Error getting the cuentas '+e.error, '', {
+        this.snackbar.open('Error getting the solicitudes '+e.error, '', {
           duration: 3000
         });
       },
@@ -40,12 +39,12 @@ export class CuentasComponent implements OnInit  {
     });
   }
   delete(id: number){
-    this.cuentaService.deleteAccount(id).subscribe({
+    this.solicitudService.deleteRequest(id).subscribe({
       next: () => {
         this.updateData();
       },
       error: (e: any) => {
-        this.snackbar.open('Error deleting the cuenta '+e.error, '', {
+        this.snackbar.open('Error deleting the solicitud '+e.error, '', {
           duration: 3000
         });
       },
@@ -56,7 +55,7 @@ export class CuentasComponent implements OnInit  {
   confirmDeletion(id: number) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
-      data: { title: 'Cuenta ' + id }
+      data: { title: 'solicitud ' + id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -65,4 +64,5 @@ export class CuentasComponent implements OnInit  {
       }
     });
   }
+
 }

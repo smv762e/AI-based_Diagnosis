@@ -44,5 +44,4 @@ public class TrolleyController {
         trolleyService.changeTrolleyState(id, newState);
     }
 
-    // Puedes agregar más métodos según tus necesidades, por ejemplo, para gestionar las relaciones Many-to-Many con técnicos.
 }
