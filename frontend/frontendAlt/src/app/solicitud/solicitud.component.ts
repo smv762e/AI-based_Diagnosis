@@ -1,10 +1,12 @@
-// request-list.component.ts
+// solicitud.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RobotService } from '../services/robot.service'; 
+
 
 @Component({
   selector: 'app-request-list',
@@ -12,18 +14,22 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./solicitud.component.css']
 })
 export class RequestListComponent implements OnInit {
+  [x: string]: any;
 
-  displayedColumns = ['id', 'route', 'drugs', 'view', 'delete'];
+  displayedColumns = ['id', 'route', 'drugs', 'robot', 'accept', 'view', 'delete'];
   requests: any[] = [];
   element = {};
+  robots: any[] = [];  // Agregamos la lista de robots
   dataSource = new MatTableDataSource(this.requests);
 
   constructor(private requestService: RequestService,
     private snackbar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private robotService: RobotService  ) { }
 
   ngOnInit(): void {
     this.updateData();
+    this.loadRobots();  // Cargamos la lista de robots al inicializar
   }
 
   updateData() {
@@ -41,6 +47,23 @@ export class RequestListComponent implements OnInit {
       complete: () => console.log('done'),
     });
   }
+
+  loadRobots() {
+    this.robotService.getRobots().subscribe({
+      next: (robots: any[]) => {
+        console.log(robots);
+        // Filtrar los robots con estado true
+        this.robots = robots.filter(robot => robot.estado === true);
+      },
+      error: (e: any) => {
+        this.snackbar.open('Error getting the robots ' + e.error, '', {
+          duration: 3000
+        });
+      },
+      complete: () => console.log('done'),
+    });
+  }
+
   delete(id: number) {
     this.requestService.deleteRequest(id).subscribe({
       next: () => {
@@ -66,5 +89,10 @@ export class RequestListComponent implements OnInit {
         this.delete(id);
       }
     });
+  }
+  onRobotSelected(event: any, element: any) {
+    const selectedRobotId = event.value;
+    // Asignar el robot a la solicitud
+    element.robotId = selectedRobotId;
   }
 }

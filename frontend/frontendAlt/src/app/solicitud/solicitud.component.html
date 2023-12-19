@@ -7,17 +7,37 @@
   </ng-container>
 
   <ng-container matColumnDef="route">
-    <mat-header-cell *matHeaderCellDef>Route</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Destino</mat-header-cell>
     <mat-cell *matCellDef="let element" title="{{element.route}}">{{element.route}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="drugs">
-    <mat-header-cell *matHeaderCellDef>Drugs</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Medicamentos</mat-header-cell>
     <mat-cell *matCellDef="let element" title="{{element.drugs}}">{{element.drugs}}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="robot">
+    <mat-header-cell *matHeaderCellDef>Carro Asociado</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <mat-select [(value)]="element.robotId" (selectionChange)="onRobotSelected($event, element)">
+        <mat-option *ngFor="let robot of robots" [value]="robot.id">
+          {{robot.name}} <!-- Ajusta esto según la estructura de tu objeto robot -->
+        </mat-option>
+      </mat-select>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="accept">
+    <mat-header-cell *matHeaderCellDef>Aceptar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button title="Aceptar solicitud">
+        <mat-icon>check</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="view">
-    <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Vista</mat-header-cell>
     <mat-cell *matCellDef="let element">
       <a mat-icon-button title="View/edit solicitud" routerLink="/request/{{element.id}}">
         <mat-icon>visibility</mat-icon>
@@ -26,7 +46,7 @@
   </ng-container>
 
   <ng-container matColumnDef="delete">
-    <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
     <mat-cell *matCellDef="let element">
       <button mat-icon-button title="Delete solicitud" (click)="confirmDeletion(element.id)">
         <mat-icon>delete</mat-icon>

@@ -1,8 +1,8 @@
 <div class="container">
     <mat-card>
         <mat-card-title>
-            <div *ngIf="create">Create Solicitud</div>
-            <div *ngIf="!create">Edit Solicitud {{request.id}}</div>
+            <div *ngIf="create">Crear Solicitud</div>
+            <div *ngIf="!create">Editar Solicitud {{request.id}}</div>
         </mat-card-title>
         
         <form class="create-model-form" #form="ngForm" (ngSubmit)="onSubmit(form.value)" autocomplete="off">
@@ -15,15 +15,15 @@
             </mat-form-field>
             <br>
             <mat-form-field class="full-width">
-                <input matInput type="string" placeholder="Ruta" required name="ruta"  [(ngModel)]="request.route">
+                <input matInput type="string" placeholder="Destino" required name="ruta"  [(ngModel)]="request.route">
             </mat-form-field>
             <br>
             <div class="row-buttons">
                 <span class="spacer"></span>
-                <a (click)="back()" class="form-btn" mat-button>Go Back</a>
-                <button type="submit" class="form-btn" [disabled]="form.invalid" mat-raised-button color="accent">
-                <div *ngIf="create">Create</div>
-                <div *ngIf="!create">Edit</div>
+                <a (click)="back()" class="form-btn" mat-button>Atras</a>
+                <button type="submit" class="form-btn" [disabled]="form.invalid" mat-sraised-button color="accent">
+                <div *ngIf="create">Crear</div>
+                <div *ngIf="!create">Editar</div>
                 </button>
             </div>          
         </form> 
