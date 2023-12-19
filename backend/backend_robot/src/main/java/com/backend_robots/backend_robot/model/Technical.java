@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 import java.util.*;
@@ -57,7 +56,7 @@ public class Technical {
         return registros;
     }
 
-    @ManyToMany(mappedBy = "tecnicos")
+    @OneToMany(mappedBy = "tecnicos")
     private List<Trolley> carros;
 
     public void addRecord(Record record) {

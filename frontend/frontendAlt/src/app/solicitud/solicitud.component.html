@@ -1,40 +1,39 @@
+<!-- solicitud.component.html -->
 <mat-table [dataSource]="dataSource">
+  <!-- Define the columns -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.id}}">{{element.id}}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element" title="{{element.id}}">{{ element.id}} </mat-cell>
-      </ng-container>
+  <ng-container matColumnDef="route">
+    <mat-header-cell *matHeaderCellDef>Route</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.route}}">{{element.route}}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="drugs">
-      <mat-header-cell *matHeaderCellDef> Drugs </mat-header-cell>
-      <mat-cell *matCellDef="let element" title="{{element.drugs}}">{{ element.drugs}} </mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="drugs">
+    <mat-header-cell *matHeaderCellDef>Drugs</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.drugs}}">{{element.drugs}}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="Id_ruta">
-        <mat-header-cell *matHeaderCellDef> Id_ruta </mat-header-cell>
-        <mat-cell *matCellDef="let element" title="{{element.Id_ruta}}">{{ element.Id_ruta}} </mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="view">
+    <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a mat-icon-button title="View/edit solicitud" routerLink="/request/{{element.id}}">
+        <mat-icon>visibility</mat-icon>
+      </a>
+    </mat-cell>
+  </ng-container>
 
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button title="Delete solicitud" (click)="confirmDeletion(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="view">
-      <mat-header-cell *matHeaderCellDef > View </mat-header-cell>
-      <mat-cell *matCellDef="let element">            
-        <a mat-icon-button title="View/edit request" routerLink="/requests/{{element.id}}">
-          <mat-icon color="primary">visibility</mat-icon>
-        </a>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
-      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-      <mat-cell *matCellDef="let element">            
-        <button mat-icon-button title="Delete request" (click)="confirmDeletion(element.id)">
-          <mat-icon color="primary">delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
-

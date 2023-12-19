@@ -15,7 +15,7 @@ export class CreateSolicitudComponent {
   request: Request = new Request();
   create: boolean = true;
   requestId: number = 0;
-  listaMedicamentos: string[] = [];
+  medicamentos: string = "";
 
   constructor(private requestService: RequestService,
     private snackbar: MatSnackBar,

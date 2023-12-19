@@ -1,15 +1,19 @@
 <mat-toolbar color="primary">
     <span>
-       Ingenieria Web
+        SisCaSan (Sistema de Carros Sanitarios)
     </span>
     <button mat-button routerLink="/">Home
-        <mat-icon>dashboard</mat-icon> </button>
-    <button mat-button routerLink="/create">Create
-        <mat-icon>book</mat-icon>
+        <mat-icon>dashboard</mat-icon>
     </button>
-    <button mat-button routerLink="/robot">Robots
-        <mat-icon>book</mat-icon>
-    </button>    
+    <button mat-button routerLink="/requests" class="mat-button-clinical">Técnico
+        <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-button routerLink="/create" class="mat-button-clinical">Médico
+        <mat-icon>medical_services</mat-icon>
+    </button>
+    <button mat-button routerLink="/robot" class="mat-button-clinical">Robots 
+        <mat-icon>android</mat-icon>
+    </button>
     <button mat-button>Logout
         <mat-icon>logout</mat-icon>
     </button>

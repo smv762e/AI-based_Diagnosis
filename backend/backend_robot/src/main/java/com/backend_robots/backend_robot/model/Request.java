@@ -1,5 +1,7 @@
 package com.backend_robots.backend_robot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,33 +10,50 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "medicamentos")
-    private String[] drugs;
-
 
     public long getId() {
         return id;
     }
 
-    public Request(String[]drugs, long Id_ruta){
-        this.drugs=drugs;
-        this.Id_ruta=Id_ruta;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    private long Id_ruta;
+    @Column(name = "drugs")
+    private String drugs;
 
-    public long getId_ruta() {
-        return Id_ruta;
+    public void setDrugs(String drugs) {
+        this.drugs = drugs;
     }
 
-
-    public String[] getDrugs() {
+    public String getDrugs() {
         return drugs;
+    }
+
+    @Column(name = "route")
+    private String route;
+
+    public String getRoute() {
+        return route;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
+    }
+
+    public Request() {
+        
+    }
+
+    public Request(String drugs, String route) {
+        this.drugs = drugs;
+        this.route = route;
     }
 
     @ManyToOne
@@ -48,20 +67,8 @@ public class Request {
         Medico = medico;
     }
 
-    
-
-    public void setDrugs(String[] drugs) {
-        this.drugs = drugs;
-    }
-
-    public void setId_ruta(long Id_ruta) {
-        this.Id_ruta = Id_ruta;
-    }
-
     @ManyToOne
     private Technical technician;
-
-    // Getters y setters para otros atributos
 
     public Technical getTechnician() {
         return technician;
@@ -71,5 +78,4 @@ public class Request {
         this.technician = technician;
     }
 
-    
 }

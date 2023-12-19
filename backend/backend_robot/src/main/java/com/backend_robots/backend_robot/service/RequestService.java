@@ -28,7 +28,6 @@ public class RequestService {
     }
 
     public Request createRequest(Request request) {
-        // Aquí podrías agregar lógica adicional antes de guardar la solicitud, si es necesario
         return requestRepository.save(request);
     }
 
@@ -36,12 +35,8 @@ public class RequestService {
         Optional<Request> optionalRequest = requestRepository.findById(id);
         if (optionalRequest.isPresent()) {
             Request existingRequest = optionalRequest.get();
-            // Actualizar los campos que sean necesarios
             existingRequest.setDrugs(requestDetails.getDrugs());
-            existingRequest.setId_ruta(requestDetails.getId_ruta());
             existingRequest.setMedico(requestDetails.getMedico());
-
-            // Guardar la solicitud actualizada
             return requestRepository.save(existingRequest);
         } else {
             return null;

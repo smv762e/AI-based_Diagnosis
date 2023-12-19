@@ -1,7 +1,6 @@
 package com.backend_robots.backend_robot.controller;
 
 import com.backend_robots.backend_robot.model.Admin;
-import com.backend_robots.backend_robot.model.Routes;
 import com.backend_robots.backend_robot.service.AdminService;
 import com.backend_robots.backend_robot.service.RoutesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public Admin getAdminById(@PathVariable Long id) {
+    public Admin getAdminById(@PathVariable long id) {
         return adminService.getAdminById(id)
                 .orElse(null); // Manejar el caso en el que el administrador no existe con el ID proporcionado
     }
@@ -36,19 +35,8 @@ public class AdminController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAdmin(@PathVariable Long id) {
+    public void deleteAdmin(@PathVariable long id) {
         adminService.deleteAdmin(id);
     }
 
-    @PostMapping("/{adminId}/add-route")
-    public Admin addRouteToAdmin(@PathVariable Long adminId, @RequestBody Routes route) {
-        return adminService.addRouteToAdmin(adminId, route);
-    }
-
-    @DeleteMapping("/{adminId}/remove-route/{routeId}")
-    public Admin removeRouteFromAdmin(@PathVariable Long adminId, @PathVariable Long routeId) {
-        return adminService.removeRouteFromAdmin(adminId, routeId);
-    }
-
-    // Puedes agregar más métodos según tus necesidades, por ejemplo, para realizar operaciones específicas del administrador.
 }

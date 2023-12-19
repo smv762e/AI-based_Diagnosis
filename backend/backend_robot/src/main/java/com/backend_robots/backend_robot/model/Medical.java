@@ -5,11 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-
-import java.util.List;  // Importa List
 
 @Entity
 public class Medical {
@@ -23,14 +18,6 @@ public class Medical {
 
     @Column(name = "contraseña")
     private String password;
-
-    @ManyToMany
-    @JoinTable(
-        name = "medical_places",
-        joinColumns = @JoinColumn(name = "medical_id"),
-        inverseJoinColumns = @JoinColumn(name = "route_id")
-    )
-    private List<Routes> routes;  // Cambia el tipo a List<Routes>
 
     public Medical() {
         // Constructor vacío necesario para JPA
@@ -65,11 +52,4 @@ public class Medical {
         this.password = password;
     }
 
-    public List<Routes> getRoutes() {
-        return routes;
-    }
-
-    public void setRoutes(List<Routes> routes) {
-        this.routes = routes;
-    }
 }

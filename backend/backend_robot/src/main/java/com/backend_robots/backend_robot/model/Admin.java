@@ -1,7 +1,6 @@
 package com.backend_robots.backend_robot.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "admin")
@@ -14,15 +13,6 @@ public class Admin {
     private String user;
     @Column(name = "contraseña")
     private String password;
-
-    @ManyToMany
-    @JoinTable(
-        name = "admin_routes",
-        joinColumns = @JoinColumn(name = "admin_id"),
-        inverseJoinColumns = @JoinColumn(name = "routes_id")
-    )
-    @Column(name = "rutas")
-    private List<Routes> routes;
 
     public Admin() {
         // Constructor vacío necesario para JPA
@@ -57,11 +47,4 @@ public class Admin {
         this.password = password;
     }
 
-    public List<Routes> getRoutes() {
-        return routes;
-    }
-
-    public void setRoutes(List<Routes> routes) {
-        this.routes = routes;
-    }
 }

@@ -1,7 +1,8 @@
 package com.backend_robots.backend_robot.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 public class Routes {
@@ -9,30 +10,17 @@ public class Routes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "Final", columnDefinition = "VARCHAR(255)")
     private String finalPoint;
+    @Column(name = "Inicio", columnDefinition = "VARCHAR(255)")
     private String initialPoint;
 
-    @ManyToMany(mappedBy = "routes")
-    private List<Admin> admins;
-
-    @ManyToMany(mappedBy = "routes")
-    private List<Medical> medicals;
-
-    public List<Medical> getMedicals() {
-		return medicals;
-	}
-
-	public void setMedicals(List<Medical> medicals) {
-		this.medicals = medicals;
-	}
-
 	public Routes() {
-        // Constructor vacío necesario para JPA
     }
 
-    public Routes(String finalPoint, String initialPoint) {
-        this.finalPoint = finalPoint;
+    public Routes(String initialPoint, String finalPoint) {
         this.initialPoint = initialPoint;
+        this.finalPoint = finalPoint;
     }
 
     public String getInitialPoint() {
@@ -51,7 +39,7 @@ public class Routes {
         this.finalPoint = finalPoint;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -59,12 +47,18 @@ public class Routes {
         this.id = id;
     }
 
-    public List<Admin> getAdmins() {
-        return admins;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Routes routes = (Routes) o;
+        return Objects.equals(id, routes.id);
     }
 
-    public void setAdmins(List<Admin> admins) {
-        this.admins = admins;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
+
     
 }

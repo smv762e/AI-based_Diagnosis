@@ -1,5 +1,6 @@
 export class Robot {
-    id_carro: any | undefined;
+    id: any | undefined;
+    nombre: string | undefined;
     estado: boolean | undefined;
     
     constructor() {  }

@@ -21,8 +21,9 @@ import { MatCardModule } from '@angular/material/card';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CreateSolicitudComponent } from './create-solicitud/create-solicitud.component';
-import { SolicitudComponent } from './solicitud/solicitud.component';
+import { RequestListComponent } from './solicitud/solicitud.component';
 import { RobotListComponent } from './robots/robots.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { RobotListComponent } from './robots/robots.component';
     HeaderComponent,
     ConfirmDialogComponent,
     CreateSolicitudComponent,
-    SolicitudComponent,
-    RobotListComponent
+    RequestListComponent,
+    RobotListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

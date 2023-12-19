@@ -1,11 +1,39 @@
-<!-- robot-list.component.html -->
-<div>
-    <h2>Lista de Robots</h2>
-    <ul>
-      <li *ngFor="let robot of robots">
-        ID: {{ robot.id }} - Estado: {{ robot.state }}
-      </li>
-    </ul>
-  </div>
-  
-  
+<!-- robots.component.html -->
+<mat-table [dataSource]="dataSource">
+  <!-- Define las columnas -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.id}}">{{element.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.nombre}}">{{element.nombre}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.estado}}">{{element.estado}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="view">
+    <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a mat-icon-button title="View/edit robot" routerLink="/robot/{{element.id}}">
+        <mat-icon>visibility</mat-icon>
+      </a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button title="Delete robot" (click)="confirmDeletion(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -25,7 +25,7 @@ public class MedicalController {
     }
 
     @GetMapping("/{id}")
-    public Medical getMedicalById(@PathVariable Long id) {
+    public Medical getMedicalById(@PathVariable long id) {
         return medicalService.getMedicalById(id)
                 .orElse(null); // Manejar el caso en el que el médico no existe con el ID proporcionado
     }
@@ -36,19 +36,19 @@ public class MedicalController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMedical(@PathVariable Long id) {
+    public void deleteMedical(@PathVariable long id) {
         medicalService.deleteMedical(id);
     }
 
     @PostMapping("/{medicalId}/requests")
-    public Request createRequest(@PathVariable Long medicalId, @RequestBody Request request) {
+    public Request createRequest(@PathVariable long medicalId, @RequestBody Request request) {
         return medicalService.createRequest(medicalId, request);
     }
 
     @PutMapping("/{medicalId}/requests/{requestId}")
     public Request updateRequest(
-            @PathVariable Long medicalId,
-            @PathVariable Long requestId,
+            @PathVariable long medicalId,
+            @PathVariable long requestId,
             @RequestBody Request updatedRequest
     ) {
         return medicalService.updateRequest(medicalId, requestId, updatedRequest);
