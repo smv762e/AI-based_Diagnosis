@@ -30,8 +30,8 @@ public class TrolleyController {
     }
 
     @PostMapping
-    public Trolley saveTrolley(@RequestBody Trolley trolley) {
-        return trolleyService.saveTrolley(trolley);
+    public void saveTrolley(@RequestBody Trolley trolley) {
+         trolleyService.saveTrolley(trolley);
     }
 
     @DeleteMapping("/{id}")

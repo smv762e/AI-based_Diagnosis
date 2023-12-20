@@ -46,4 +46,21 @@ public class RequestService {
     public void deleteRequest(Long id) {
         requestRepository.deleteById(id);
     }
+
+    public Request acceptRequest(Long id, Long robotId) {
+        // Obtén la solicitud por ID
+        Request request = getRequestById(id);
+        if (request == null) {
+            // La solicitud no existe
+            return null;
+        }
+
+        // Actualiza el estado de la solicitud
+        request.setAccepted(true);
+        updateRequest(robotId, request);
+
+        // Aquí puedes agregar más lógica si es necesario
+
+        return request;
+    }
 }

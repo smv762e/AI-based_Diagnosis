@@ -26,8 +26,8 @@ public class TrolleyService {
         return trolleyRepository.findById(id);
     }
 
-    public Trolley saveTrolley(Trolley trolley) {
-        return trolleyRepository.save(trolley);
+    public void  saveTrolley(Trolley trolley) {
+        trolleyRepository.save(trolley);
     }
 
     public void deleteTrolley(Long id) {
@@ -41,10 +41,10 @@ public class TrolleyService {
             trolley.setEstado(newState);
             trolleyRepository.save(trolley);
         } else {
-            // Manejar el caso en el que el carro no existe con el ID proporcionado
-            // Puedes lanzar una excepción o manejarlo de otra manera según tus necesidades
+
         }
     }
 
-    // Puedes agregar más métodos según tus necesidades, por ejemplo, para gestionar las relaciones Many-to-Many con técnicos.
+    
+
 }

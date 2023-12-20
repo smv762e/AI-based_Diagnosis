@@ -19,11 +19,12 @@ export class RequestService {
       return this.httpClient.get<JSON[]>(this.url);
     }
 
-    acceptRequest(requestId: number): Observable<any> {
+    acceptRequest(requestId: number, robotId: number): Observable<any> {
       const url = `${this.baseUrl}/request/accept/${requestId}`;
-      return this.httpClient.put(url, null);
+      // Puedes enviar el ID del carro al servidor si es necesario
+      return this.httpClient.put(url, { robotId });
     }
-
+    
     getRequest(id: number){
       return this.httpClient.get<JSON>(this.url + '/' + id);
     }

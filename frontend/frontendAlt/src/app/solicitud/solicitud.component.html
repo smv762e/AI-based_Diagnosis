@@ -16,6 +16,11 @@
     <mat-cell *matCellDef="let element" title="{{element.drugs}}">{{element.drugs}}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="idMedico">
+    <mat-header-cell *matHeaderCellDef>ID Médico</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.medico}}">{{element.medico}}</mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="robot">
     <mat-header-cell *matHeaderCellDef>Carro Asociado</mat-header-cell>
     <mat-cell *matCellDef="let element">
@@ -27,14 +32,21 @@
     </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="accepted">
+    <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+    <mat-cell *matCellDef="let element" title="{{element.accepted}}">{{ element.accepted ? 'Aceptado' : 'No aceptado' }}</mat-cell>
+  </ng-container>
+
+
   <ng-container matColumnDef="accept">
     <mat-header-cell *matHeaderCellDef>Aceptar</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-icon-button title="Aceptar solicitud">
+      <button mat-icon-button title="Aceptar solicitud" (click)="acceptRequest(element.id)">
         <mat-icon>check</mat-icon>
       </button>
     </mat-cell>
   </ng-container>
+  
 
   <ng-container matColumnDef="view">
     <mat-header-cell *matHeaderCellDef>Vista</mat-header-cell>

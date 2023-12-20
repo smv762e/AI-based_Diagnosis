@@ -51,20 +51,46 @@ public class Request {
         
     }
 
-    public Request(String drugs, String route) {
+    public Request(String drugs, String route, boolean accepted, Trolley trolley, Medical medico, Technical technician) {
         this.drugs = drugs;
         this.route = route;
+        this.accepted = accepted;
+        this.trolley = trolley;
+        this.medico = medico;
+        this.technician = technician;
+    }
+
+    @Column(name = "accepted")
+    private boolean accepted = false;
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
     }
 
     @ManyToOne
-    private Medical Medico;
+    private Trolley trolley;
+
+    public Trolley getTrolley() {
+        return trolley;
+    }
+
+    public void setTrolley(Trolley trolley) {
+        this.trolley = trolley;
+    }
+
+    @ManyToOne
+    private Medical medico;
 
     public Medical getMedico() {
-        return Medico;
+        return medico;
     }
 
     public void setMedico(Medical medico) {
-        Medico = medico;
+        this.medico = medico;
     }
 
     @ManyToOne

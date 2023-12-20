@@ -11,13 +11,17 @@
             </mat-form-field>
 
             <mat-form-field class="full-width">
-                <input matInput type="string" placeholder="Medicamentos" required name="medicamento"  [(ngModel)]="request.drugs">
-            </mat-form-field>
-            <br>
-            <mat-form-field class="full-width">
                 <input matInput type="string" placeholder="Destino" required name="ruta"  [(ngModel)]="request.route">
             </mat-form-field>
-            <br>
+
+            <mat-form-field class="full-width">
+                <input matInput type="string" placeholder="Medicamentos" required name="medicamento"  [(ngModel)]="request.drugs">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="ID Médico" required name="idMedico"  [(ngModel)]="request.idMedico">
+            </mat-form-field>
+
             <div class="row-buttons">
                 <span class="spacer"></span>
                 <a (click)="back()" class="form-btn" mat-button>Atras</a>

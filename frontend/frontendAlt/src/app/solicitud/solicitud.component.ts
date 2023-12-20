@@ -16,7 +16,7 @@ import { RobotService } from '../services/robot.service';
 export class RequestListComponent implements OnInit {
   [x: string]: any;
 
-  displayedColumns = ['id', 'route', 'drugs', 'robot', 'accept', 'view', 'delete'];
+  displayedColumns = ['id', 'route', 'drugs', 'idMedico', 'robot', 'accepted', 'accept', 'view', 'delete'];
   requests: any[] = [];
   element = {};
   robots: any[] = [];  // Agregamos la lista de robots
@@ -95,4 +95,26 @@ export class RequestListComponent implements OnInit {
     // Asignar el robot a la solicitud
     element.robotId = selectedRobotId;
   }
+  
+  acceptRequest(requestId: number) {
+    // Obtén el ID del carro asociado desde el elemento actual
+    const robotId = this.requests.find(request => request.id === requestId)?.robotId;
+  
+    if (robotId) {
+      // Llama al servicio para aceptar la solicitud y actualizar el estado del carro
+      this.requestService.acceptRequest(requestId, robotId).subscribe({
+        next: () => {
+          // Realiza cualquier acción adicional después de aceptar la solicitud
+          this.updateData();
+        },
+        error: (e: any) => {
+          this.snackbar.open('Error accepting the request ' + e.error, '', {
+            duration: 3000
+          });
+        },
+        complete: () => console.log('done'),
+      });
+    }
+  }
+  
 }

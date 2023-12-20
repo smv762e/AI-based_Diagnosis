@@ -15,7 +15,6 @@ export class CreateSolicitudComponent {
   request: Request = new Request();
   create: boolean = true;
   requestId: number = 0;
-  medicamentos: string = "";
 
   constructor(private requestService: RequestService,
     private snackbar: MatSnackBar,

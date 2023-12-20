@@ -11,15 +11,13 @@
     <mat-cell *matCellDef="let element" title="{{element.name}}">{{element.name}}</mat-cell>
   </ng-container>
 
-<ng-container matColumnDef="estado">
-  <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-  <mat-cell *matCellDef="let element">
-    {{ element.estado ? 'Libre' : 'Ocupado' }}
-  </mat-cell>
-</ng-container>
-
-
-
+  <ng-container matColumnDef="estado">
+    <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.estado ? 'Libre' : 'Ocupado' }}
+    </mat-cell>
+  </ng-container>
+  
   <ng-container matColumnDef="view">
     <mat-header-cell *matHeaderCellDef>Vista</mat-header-cell>
     <mat-cell *matCellDef="let element">
