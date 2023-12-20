@@ -1,0 +1,62 @@
+/* login.component.css */
+
+/* Contenedor principal del formulario */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Formulario de inicio de sesión */
+  .login-form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Etiqueta del formulario */
+  .login-form label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Entradas de texto del formulario */
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Botón de inicio de sesión */
+  .login-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Estilo para el mensaje de error */
+  .error-message {
+    color: #ff0000;
+    margin-top: 10px;
+  }
+  
+  /* Agregar este estilo para centrar el formulario en la página */
+  @media only screen and (max-width: 600px) {
+    .login-container {
+      align-items: flex-start;
+    }
+  
+    .login-form {
+      margin-top: 20px;
+    }
+  }
+  

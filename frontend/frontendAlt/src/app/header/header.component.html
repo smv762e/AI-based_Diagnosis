@@ -1,20 +1,25 @@
+<!-- header.component.html -->
 <mat-toolbar color="primary">
     <span>
-        SisCaSan (Sistema de Carros Sanitarios)
+      SisCaSan (Sistema de Carros Sanitarios)
     </span>
-    <button mat-button routerLink="/">Home
-        <mat-icon>dashboard</mat-icon>
+    <button mat-button routerLink="/login" >Login
+      <mat-icon>lock</mat-icon>
     </button>
-    <button mat-button routerLink="/requests" class="mat-button-clinical">Técnico
-        <mat-icon>settings</mat-icon>
+    <button mat-button routerLink="/" >Home
+      <mat-icon>dashboard</mat-icon>
     </button>
-    <button mat-button routerLink="/create" class="mat-button-clinical">Médico
-        <mat-icon>medical_services</mat-icon>
+    <button mat-button routerLink="/requests" >Técnico
+      <mat-icon>settings</mat-icon>
     </button>
-    <button mat-button routerLink="/robot" class="mat-button-clinical">Carros 
-        <mat-icon>shopping_cart</mat-icon>
+    <button mat-button routerLink="/create" >Médico
+      <mat-icon>medical_services</mat-icon>
     </button>
-    <button mat-button>Logout
-        <mat-icon>logout</mat-icon>
+    <button mat-button routerLink="/robot" >Carros 
+      <mat-icon>shopping_cart</mat-icon>
     </button>
-</mat-toolbar>
+    <button mat-button (click)="logout()">Logout
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  

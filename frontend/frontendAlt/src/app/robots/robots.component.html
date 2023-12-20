@@ -17,6 +17,15 @@
       {{ element.estado ? 'Libre' : 'Ocupado' }}
     </mat-cell>
   </ng-container>
+
+  <ng-container matColumnDef="desocupar">
+    <mat-header-cell *matHeaderCellDef>Desocupar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-raised-button color="warn" (click)="desocuparRobot(element.id)">
+        Desocupar
+      </button>
+    </mat-cell>
+  </ng-container>
   
   <ng-container matColumnDef="view">
     <mat-header-cell *matHeaderCellDef>Vista</mat-header-cell>

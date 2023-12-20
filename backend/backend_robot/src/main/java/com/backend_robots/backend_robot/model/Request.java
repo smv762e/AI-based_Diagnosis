@@ -51,13 +51,10 @@ public class Request {
         
     }
 
-    public Request(String drugs, String route, boolean accepted, Trolley trolley, Medical medico, Technical technician) {
+    public Request(String drugs, String route, boolean accepted) {
         this.drugs = drugs;
         this.route = route;
         this.accepted = accepted;
-        this.trolley = trolley;
-        this.medico = medico;
-        this.technician = technician;
     }
 
     @Column(name = "accepted")

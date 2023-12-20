@@ -1,0 +1,25 @@
+<!-- login.component.html -->
+
+<div class="login-container">
+  <form class="login-form" (ngSubmit)="login()">
+    <div>
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user">
+    </div>
+    <div>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password">
+    </div>
+    
+    <!-- Nuevo elemento para seleccionar el rol -->
+    <div>
+      <label for="role">Seleccionar Rol:</label>
+      <select id="role" name="role" [(ngModel)]="selectedRole">
+        <option value="medico">Médico</option>
+        <option value="tecnico">Técnico</option>
+      </select>
+    </div>
+    
+    <button type="submit" [disabled]="isLogged">Iniciar sesión</button>
+  </form>
+</div>

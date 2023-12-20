@@ -16,7 +16,7 @@ import { RobotService } from '../services/robot.service';
 export class RequestListComponent implements OnInit {
   [x: string]: any;
 
-  displayedColumns = ['id', 'route', 'drugs', 'idMedico', 'robot', 'accepted', 'accept', 'view', 'delete'];
+  displayedColumns = ['id', 'route', 'drugs', 'robot', 'accepted', 'accept', 'view', 'delete'];
   requests: any[] = [];
   element = {};
   robots: any[] = [];  // Agregamos la lista de robots

@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RobotListComponent implements OnInit {
 
-  displayedColumns = ['id', 'nombre', 'estado', 'view', 'delete'];
+  displayedColumns = ['id', 'nombre', 'estado', 'view', 'delete', 'desocupar'];
   robots: any[] = []; 
   element = {};
   dataSource = new MatTableDataSource(this.robots);
@@ -67,4 +67,22 @@ export class RobotListComponent implements OnInit {
       }
     });
   }
+
+  desocuparRobot(id: number) {
+    this.robotService.changeTrolleyState(id, true).subscribe({
+      next: () => {
+        this.updateData();
+        this.snackbar.open('Robot desocupado correctamente', '', {
+          duration: 3000
+        });
+      },
+      error: (e: any) => {
+        this.snackbar.open('Error al desocupar el robot ' + e.error.message, '', {
+          duration: 3000
+        });
+      },
+      complete: () => console.log('done'),
+    });
+  }
+  
 }

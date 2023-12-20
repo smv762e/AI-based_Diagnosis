@@ -26,6 +26,13 @@ public class AdminService {
         return adminRepository.findById(id);
     }
 
+    public boolean loginAdmin(String user, String password) {
+        Optional<Admin> adminOptional = adminRepository.findByUserAndPassword(user, password);
+
+        // Verifica si el usuario y la contraseña son válidos
+        return adminOptional.isPresent();
+    }
+
     public Admin saveAdmin(Admin admin) {
         return adminRepository.save(admin);
     }
@@ -33,5 +40,4 @@ public class AdminService {
     public void deleteAdmin(Long id) {
         adminRepository.deleteById(id);
     }
-
 }

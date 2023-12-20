@@ -39,9 +39,10 @@ public class TrolleyController {
         trolleyService.deleteTrolley(id);
     }
 
-    @PatchMapping("/{id}/change-state")
-    public void changeTrolleyState(@PathVariable Long id, @RequestParam boolean newState) {
+    @PatchMapping("/{id}/change-state/{newState}")
+    public void changeTrolleyState(@PathVariable Long id, @PathVariable boolean newState) {
         trolleyService.changeTrolleyState(id, newState);
     }
+
 
 }

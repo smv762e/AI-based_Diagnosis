@@ -11,6 +11,7 @@ public class Admin {
     private long id;
     @Column(name = "nombre")
     private String user;
+
     @Column(name = "contraseña")
     private String password;
 

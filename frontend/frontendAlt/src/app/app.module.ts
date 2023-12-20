@@ -24,6 +24,7 @@ import { CreateSolicitudComponent } from './create-solicitud/create-solicitud.co
 import { RequestListComponent } from './solicitud/solicitud.component';
 import { RobotListComponent } from './robots/robots.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomeComponent } from './home/home.component';
     CreateSolicitudComponent,
     RequestListComponent,
     RobotListComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

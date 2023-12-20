@@ -35,15 +35,13 @@ public class TrolleyService {
     }
 
     public void changeTrolleyState(Long id, boolean newState) {
-        Optional<Trolley> optionalTrolley = trolleyRepository.findById(id);
-        if (optionalTrolley.isPresent()) {
-            Trolley trolley = optionalTrolley.get();
-            trolley.setEstado(newState);
-            trolleyRepository.save(trolley);
-        } else {
+    Optional<Trolley> optionalTrolley = trolleyRepository.findById(id);
+    optionalTrolley.ifPresent(trolley -> {
+        trolley.setEstado(newState);
+        trolleyRepository.save(trolley);
+    });
+}
 
-        }
-    }
 
     
 

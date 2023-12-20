@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {Robot} from '../robot';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,12 @@ export class RobotService {
     deleteRobot(id: number){
       return this.httpClient.delete(this.url + '/' + id)
     }
+
+    changeTrolleyState(trolleyId: number, newState: boolean): Observable<any> {
+      const url = `${this.baseUrl}/trolleys/${trolleyId}/change-state/${newState}`;
+      return this.httpClient.patch(url, null);
+  }
+
+    
 
 }

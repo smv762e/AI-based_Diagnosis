@@ -28,6 +28,11 @@ public class AdminController {
         return adminService.getAdminById(id)
                 .orElse(null); // Manejar el caso en el que el administrador no existe con el ID proporcionado
     }
+     @PostMapping("/login") // Ruta específica para el inicio de sesión
+    public boolean loginAdmin(@RequestParam String user, @RequestParam String password) {
+        // Lógica para verificar el inicio de sesión en tu servicio
+        return adminService.loginAdmin(user, password);
+    }
 
     @PostMapping
     public Admin saveAdmin(@RequestBody Admin admin) {
